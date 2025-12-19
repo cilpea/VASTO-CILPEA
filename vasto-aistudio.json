@@ -1,0 +1,41 @@
+{
+  "runSettings": {
+    "temperature": 1.0,
+    "model": "models/gemini-2.5-flash",
+    "topP": 0.95,
+    "topK": 64,
+    "maxOutputTokens": 65536,
+    "safetySettings": [{
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "OFF"
+    }],
+    "responseMimeType": "text/plain",
+    "enableSearchAsATool": false,
+    "thinkingBudget": -1
+  },
+  "systemInstruction": {
+  },
+  "chunkedPrompt": {
+    "chunks": [{
+      "text": "สวัสดี\n",
+      "role": "user",
+      "tokenCount": 3
+    }, {
+      "text": "ยินดีตอนรับสู่การสร้างสรรค์ ผลงาน กับทางเราคือ VASTO AI SUTDIO",
+      "role": "model"
+    }],
+    "pendingInputs": [{
+      "text": "ยินดีตอนรับสู่การสร้างสรรค์ ผลงาน กับทางเราคือ VASTO AI SUTDIO",
+      "role": "user"
+    }]
+  }
+}
