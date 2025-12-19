@@ -1,0 +1,33 @@
+# Create CodeQL databases for Java and Python in the 'codeql-dbs' directory
+# Call the normal build script for the codebase: 'myBuildScript'
+
+codeql database create codeql-dbs --source-root=src \
+    --db-cluster --language=java,python --command=./myBuildScript
+
+# Analyze the CodeQL database for Java, 'codeql-dbs/java'
+# Tag the data as 'java' results and store in: 'java-results.sarif'
+
+codeql database analyze codeql-dbs/java java-code-scanning.qls \
+    --format=sarif-latest --sarif-category=java --output=java-results.sarif
+
+# Analyze the CodeQL database for Python, 'codeql-dbs/python'
+# Tag the data as 'python' results and store in: 'python-results.sarif'
+
+codeql database analyze codeql-dbs/python python-code-scanning.qls \
+    --format=sarif-latest --sarif-category=python --output=python-results.sarif
+
+# Upload the SARIF file with the Java results: 'java-results.sarif'
+# The GitHub App or personal access token created for authentication
+# with GitHub's REST API is available in the `GITHUB_TOKEN` environment variable.
+
+codeql github upload-results \
+    --repository=my-org/example-repo \
+    --ref=refs/heads/main --commit=deb275d2d5fe9a522a0b7bd8b6b6a1c939552718 \
+    --sarif=java-results.sarif
+
+# Upload the SARIF file with the Python results: 'python-results.sarif'
+
+codeql github upload-results \
+    --repository=my-org/example-repo \
+    --ref=refs/heads/main --commit=deb275d2d5fe9a522a0b7bd8b6b6a1c939552718 \
+    --sarif=python-results.sarif
