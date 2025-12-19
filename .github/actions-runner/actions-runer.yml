@@ -1,0 +1,21 @@
+# Create a folder under the drive root
+mkdir actions-runner; cd actions-runner
+# Download the latest runner package
+
+Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-win-x64-2.330.0.zip 
+
+-OutFile actions-runner-win-x64-2.330.0.zip# 
+Optional: Validate the hash
+if((Get-FileHash -Path actions-runner-win-x64-2.330.0.zip
+-Algorithm SHA256).Hash.ToUpper() -ne 'a7469e7f2949657327fdd75688fd8858e1352202847d024d68b93de033990779'.ToUpper()){ throw 'Computed checksum did not match' }
+# Extract the installer
+ Add-Type -AssemblyName System.IO.Compression.FileSystem ;
+ [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.330.0.zip", "$PWD")
+
+กำหนดค่า
+# Create the runner and start the configuration experience
+./config.cmd --url https://github.com/cilpea/VASTO-CILPEA --token BA4CKU3LKMWTG7B3YAHGFOTJIWWVK# Run it!
+ ./run.cmd
+โดยใช้เซิร์ฟเวอร์ที่คุณโฮสต์เอง
+# Use this YAML in your workflow file for each job
+runs-on: self-hosted
