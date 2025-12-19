@@ -1,26 +1,12 @@
-name: CI
-
-on: [push, workflow_dispatch]
-
-jobs:
-  build:
-
-    runs-on: windows-latest
-
-    steps:
-    - name: Download
-      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: Extract
-      run: Expand-Archive ngrok.zip
-    - name: Auth
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-      env:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Enable TS
-      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-    - name: Create Tunnel
-    
-      run: .\ngrok\ngrok.exe tcp 3389
+            - ชื่อ: vercel-ai
+  # คุณสามารถกำหนด commit หรือเวอร์ชันที่แน่นอนได้
+  # ใช้: vercel/ai-action@769eb5db2c70d4edda6b14d2f4bc3f4ac66fa55d
+  ใช้: vercel/ai-action@v2.0.1
+  กับ:
+    # ข้อความแจ้งให้ป้อนข้อมูลเพื่อสร้างข้อความ
+    ข้อความแจ้งเตือน:
+    # รหัส API สำหรับ AI Gateway: https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%2Fapi-keys
+    คีย์ API:
+    # ตัวระบุจากรายการโมเดลผู้ให้บริการที่รองรับโดย AI Gateway: https://vercel.com/ai-gateway/models
+    แบบอย่าง:
+          
