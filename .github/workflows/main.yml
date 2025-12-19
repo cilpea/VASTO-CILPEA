@@ -1,12 +1,10 @@
-            - ชื่อ: vercel-ai
+            - ชื่อ: หัวหน้าเจ้าหน้าที่พิทักษ์
   # คุณสามารถกำหนด commit หรือเวอร์ชันที่แน่นอนได้
-  # ใช้: vercel/ai-action@769eb5db2c70d4edda6b14d2f4bc3f4ac66fa55d
-  ใช้: vercel/ai-action@v2.0.1
+  # ใช้: Ispx/Main-Guardian@03dcc92349ed3b21b3eb4c0d27b1e63d1a9ff512
+  ใช้: Ispx/Main-Guardian@v1.0.4
   กับ:
-    # ข้อความแจ้งให้ป้อนข้อมูลเพื่อสร้างข้อความ
-    ข้อความแจ้งเตือน:
-    # รหัส API สำหรับ AI Gateway: https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%2Fapi-keys
-    คีย์ API:
-    # ตัวระบุจากรายการโมเดลผู้ให้บริการที่รองรับโดย AI Gateway: https://vercel.com/ai-gateway/models
-    แบบอย่าง:
+    # คีย์ API สำหรับ Google Gemini
+    คีย์ API ของเจมินี:
+    # โทเค็น GitHub สำหรับการโพสต์ความคิดเห็นและการตรวจสอบโค้ด ค่าเริ่มต้นคือ github.token
+    github-token: # ค่าเริ่มต้นคือ ${{ github.token }}
           
